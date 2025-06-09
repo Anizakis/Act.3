@@ -1,0 +1,83 @@
+// Referencias a elementos del DOM
+const bookList = document.getElementById('books');
+const categoryFilter = document.getElementById('categoryFilter');
+const cart = new Cart();
+
+// Función para obtener libros desde el endpoint
+async function fetchBooks(category = '') {
+    const response = await fetch(`http://localhost:3000/books${category ? `?category=${category}` : ''}`);
+    const books = await response.json();
+    bookList.innerHTML = ''; // Limpiar listado previo
+
+    // Crear tabla
+    const table = document.createElement('table');
+    const headerRow = document.createElement('tr');
+    headerRow.innerHTML = `
+        <th>Imagen</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Acciones</th>
+    `;
+    table.appendChild(headerRow);
+
+    books.forEach(book => {
+        const row = document.createElement('tr');
+
+        // Columna de imagen
+        const imageCell = document.createElement('td');
+        const bookImage = document.createElement('img');
+        bookImage.src = `images/books/${book.id}.png`;
+        bookImage.alt = `${book.title} Cover`;
+        bookImage.style.width = '100px'; // Ajustar tamaño de la imagen
+        imageCell.appendChild(bookImage);
+        row.appendChild(imageCell);
+
+        // Columna de título
+        const titleCell = document.createElement('td');
+        titleCell.textContent = book.title;
+        row.appendChild(titleCell);
+
+        // Columna de autor
+        const authorCell = document.createElement('td');
+        authorCell.textContent = book.author;
+        row.appendChild(authorCell);
+
+        // Columna de acciones
+        const actionsCell = document.createElement('td');
+
+        // Botón para añadir al carrito con icono
+        const addToCartButton = document.createElement('button');
+        addToCartButton.innerHTML = '<i class="fas fa-cart-plus"></i>'; // Icono de Font Awesome
+        addToCartButton.title = 'Añadir al Carrito'; // Descripción al pasar el mouse
+        addToCartButton.onclick = () => cart.actualizarProducto(book.isbn, 1);
+        actionsCell.appendChild(addToCartButton);
+
+        // Enlace para ver detalles con icono
+        const detailsLink = document.createElement('a');
+        detailsLink.innerHTML = '<i class="fas fa-info-circle"></i>'; // Icono de Font Awesome
+        detailsLink.title = 'Ver Detalles'; // Descripción al pasar el mouse
+        detailsLink.href = `libro.html?id=${book.id}`;
+        actionsCell.appendChild(detailsLink);
+
+        row.appendChild(actionsCell);
+
+        table.appendChild(row);
+    });
+
+    bookList.appendChild(table);
+}
+
+// Actualizar listado al cambiar el filtro
+categoryFilter.addEventListener('change', () => {
+    fetchBooks(categoryFilter.value);
+});
+
+// Cargar libros al inicio
+fetchBooks();
+
+// Botón para vaciar el carrito
+const clearCartButton = document.createElement('button');
+clearCartButton.innerHTML = '<i class="fas fa-trash"></i>'; // Icono de Font Awesome
+clearCartButton.title = 'Vaciar Carrito'; // Descripción al pasar el mouse
+clearCartButton.onclick = () => cart.vaciarCarrito();
+document.getElementById('cart').appendChild(clearCartButton);

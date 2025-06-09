@@ -1,0 +1,32 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "isbn": "978-3-16-148410-0",
+      "title": "Book Title 1",
+      "author": "Author 1",
+      "category": "fiction"
+    },
+    {
+      "id": "2",
+      "isbn": "978-1-23-456789-7",
+      "title": "Book Title 2",
+      "author": "Author 2",
+      "category": "non-fiction"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "bookId": 1,
+      "text": "Great book!",
+      "rating": 5
+    },
+    {
+      "id": "2",
+      "bookId": 2,
+      "text": "Informative read.",
+      "rating": 4
+    }
+  ]
+}

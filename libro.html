@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Libro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Detalles del Libro</h1>
+</header>
+<main>
+    <!-- Detalles del libro -->
+    <section id="bookDetails">
+        <h2>Detalles</h2>
+        <div id="details"></div>
+    </section>
+    <!-- Opiniones del libro -->
+    <section id="reviews">
+        <h2>Opiniones</h2>
+        <ul id="reviewList"></ul>
+        <button id="addReviewButton">Añadir Opinión</button>
+    </section>
+    <!-- Libros relacionados -->
+    <section id="relatedBooks">
+        <h2>Libros Relacionados</h2>
+        <ul id="relatedBooksList"></ul>
+    </section>
+</main>
+<!-- Modal para añadir opinión -->
+<div id="reviewModal" class="modal">
+    <form id="reviewForm">
+        <label for="reviewText">Tu Opinión:</label>
+        <textarea id="reviewText" required></textarea>
+        <label for="reviewRating">Puntuación:</label>
+        <input type="number" id="reviewRating" min="1" max="5" required>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+<script src="libro.js"></script>
+</body>
+</html>
