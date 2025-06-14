@@ -38,21 +38,35 @@ class Cart {
         cartItems.innerHTML = '';
         let total = 0;
 
-        for (const isbn in this.items) {
-            const li = document.createElement('li');
-            li.textContent = `ISBN: ${isbn} - Cantidad: ${this.items[isbn]}`;
+        fetch('http://localhost:3000/books')
+            .then(response => response.json())
+            .then(books => {
+                for (const isbn in this.items) {
+                    const book = books.find(b => b.isbn === isbn);
+                    if (!book) continue;
 
-            // Botón para eliminar producto con icono
-            const removeButton = document.createElement('button');
-            removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>'; // Icono de Font Awesome
-            removeButton.title = 'Eliminar Producto'; // Descripción al pasar el mouse
-            removeButton.onclick = () => this.eliminarProducto(isbn);
-            li.appendChild(removeButton);
+                    const cantidad = this.items[isbn];
+                    const price = parseFloat(book.price) || 0;
+                    const subtotal = price * cantidad;
 
-            cartItems.appendChild(li);
-            total += this.items[isbn];
-        }
+                    const li = document.createElement('li');
+                    li.textContent = `${book.title} - ${price.toFixed(2)} €/ud × ${cantidad} = ${subtotal.toFixed(2)} €`;
 
-        cartTotal.textContent = total;
+                    const removeButton = document.createElement('button');
+                    removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                    removeButton.title = 'Eliminar Producto';
+                    removeButton.onclick = () => this.eliminarProducto(isbn);
+                    li.appendChild(removeButton);
+
+                    cartItems.appendChild(li);
+                    total += subtotal;
+                }
+
+                cartTotal.textContent = `${total.toFixed(2)} €`;
+            })
+            .catch(error => {
+                console.error('Error al cargar los libros:', error);
+                cartTotal.textContent = 'Error al calcular total';
+            });
     }
 }
