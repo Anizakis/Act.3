@@ -1,6 +1,8 @@
 class Cart {
     constructor() {
-        this.items = {};
+        const savedItems = localStorage.getItem('cart');
+        this.items = savedItems ? JSON.parse(savedItems) : {};
+        this.actualizarVista();
     }
 
     actualizarProducto(isbn, cantidad) {
@@ -12,16 +14,21 @@ class Cart {
         } else if (cantidad > 0) {
             this.items[isbn] = cantidad;
         }
+        localStorage.setItem('cart', JSON.stringify(this.items));
         this.actualizarVista();
+       
+
     }
 
     eliminarProducto(isbn) {
         delete this.items[isbn];
+        localStorage.setItem('cart', JSON.stringify(this.items));
         this.actualizarVista();
     }
 
     vaciarCarrito() {
         this.items = {};
+        localStorage.setItem('cart', JSON.stringify(this.items));
         this.actualizarVista();
     }
 
