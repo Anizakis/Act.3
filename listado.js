@@ -49,7 +49,10 @@ async function fetchBooks(category = '') {
         const addToCartButton = document.createElement('button');
         addToCartButton.innerHTML = '<i class="fas fa-cart-plus"></i>'; // Icono de Font Awesome
         addToCartButton.title = 'Añadir al Carrito'; // Descripción al pasar el mouse
-        addToCartButton.onclick = () => cart.actualizarProducto(book.isbn, 1);
+        addToCartButton.onclick = () => {
+            cart.actualizarProducto(book.isbn, 1);
+            mostrarToast();
+        };
         actionsCell.appendChild(addToCartButton);
 
         // Enlace para ver detalles con icono
@@ -92,3 +95,13 @@ closeCartBtn.addEventListener('click', () => {
         openCartBtn.classList.remove('hidden');
     }, 400); 
 });
+
+
+function mostrarToast(mensaje = "Producto añadido al carrito") {
+    const toast = document.getElementById('toast');
+    toast.textContent = mensaje;
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2000); 
+}
