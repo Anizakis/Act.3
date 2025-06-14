@@ -25,13 +25,21 @@
         <h2>Libros</h2>
         <ul id="books"></ul>
     </section>
-    <!-- Carrito de compras -->
-    <section id="cart">
-        <h2>Carrito de Compras</h2>
-        <ul id="cartItems"></ul>
-        <p>Total: <span id="cartTotal">0</span></p>
-    </section>
 </main>
+<!-- Carrito de compras -->
+<div id="cartSidebar">
+    <div class="cart-header">
+        <h2>Carrito de Compras</h2>
+        <button id="closeCartBtn" title="Cerrar"><i class="fas fa-times"></i></button>
+    </div>
+    <ul id="cartItems"></ul>
+    <p>Total: <span id="cartTotal">0.00 €</span></p>
+    <button id="clearCartBtn"><i class="fas fa-trash"></i> Vaciar Carrito</button>
+</div>
+
+<button id="openCartBtn" title="Ver carrito"><i class="fas fa-shopping-cart"></i></button>
+
+
 <script src="cart.js"></script>
 <script src="listado.js"></script>
 </body>

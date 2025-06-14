@@ -50,7 +50,14 @@ class Cart {
                     const subtotal = price * cantidad;
 
                     const li = document.createElement('li');
-                    li.textContent = `${book.title} - ${price.toFixed(2)} €/ud × ${cantidad} = ${subtotal.toFixed(2)} €`;
+                    const info = document.createElement('div');
+                    info.classList.add('cart-item-info');
+                    info.innerHTML = `
+                        <strong>${book.title}</strong><br>
+                        ${price.toFixed(2)} €/ud × ${cantidad} = <strong>${subtotal.toFixed(2)} €</strong>
+                    `;
+
+                    li.appendChild(info);
 
                     const removeButton = document.createElement('button');
                     removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';

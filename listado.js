@@ -75,9 +75,20 @@ categoryFilter.addEventListener('change', () => {
 // Cargar libros al inicio
 fetchBooks();
 
-// Botón para vaciar el carrito
-const clearCartButton = document.createElement('button');
-clearCartButton.innerHTML = '<i class="fas fa-trash"></i>'; // Icono de Font Awesome
-clearCartButton.title = 'Vaciar Carrito'; // Descripción al pasar el mouse
-clearCartButton.onclick = () => cart.vaciarCarrito();
-document.getElementById('cart').appendChild(clearCartButton);
+
+
+const cartSidebar = document.getElementById('cartSidebar');
+const openCartBtn = document.getElementById('openCartBtn');
+const closeCartBtn = document.getElementById('closeCartBtn');
+
+openCartBtn.addEventListener('click', () => {
+    cartSidebar.classList.add('open');
+    openCartBtn.classList.add('hidden'); 
+});
+
+closeCartBtn.addEventListener('click', () => {
+    cartSidebar.classList.remove('open');
+    setTimeout(() => {
+        openCartBtn.classList.remove('hidden');
+    }, 400); 
+});
