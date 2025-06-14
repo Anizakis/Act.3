@@ -72,13 +72,23 @@ async function fetchBooks(category = '') {
 
 // Actualizar listado al cambiar el filtro
 categoryFilter.addEventListener('change', () => {
-    fetchBooks(categoryFilter.value);
+    const categoria = categoryFilter.value;
+
+    // 1. Actualizar la URL con ?category=...
+    const nuevaURL = new URL(window.location.href);
+    if (categoria) {
+        nuevaURL.searchParams.set('category', categoria);
+    } else {
+        nuevaURL.searchParams.delete('category');
+    }
+    window.history.pushState({}, '', nuevaURL);
+
+    // 2. Recargar el listado con la nueva categoría
+    fetchBooks(categoria);
 });
 
 // Cargar libros al inicio
 fetchBooks();
-
-
 
 const cartSidebar = document.getElementById('cartSidebar');
 const openCartBtn = document.getElementById('openCartBtn');
@@ -105,3 +115,31 @@ function mostrarToast(mensaje = "Producto añadido al carrito") {
         toast.classList.remove('show');
     }, 2000); 
 }
+
+async function cargarCategorias() {
+    const response = await fetch('http://localhost:3000/books');
+    const books = await response.json();
+    
+    // Extraer categorías únicas
+    const categorias = [...new Set(books.map(book => book.category))];
+
+    // Añadir al <select>
+    categorias.forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat;
+        categoryFilter.appendChild(option);
+    });
+
+    // Si hay una categoría en la URL, seleccionarla
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoriaActual = urlParams.get('category');
+    if (categoriaActual) {
+        categoryFilter.value = categoriaActual;
+    }
+}
+
+// Al cargar la página: usar categoría de la URL si existe
+const categoriaInicial = new URLSearchParams(window.location.search).get('category') || '';
+fetchBooks(categoriaInicial);
+cargarCategorias();
