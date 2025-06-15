@@ -42,18 +42,29 @@ async function fetchReviews() {
     }
 }
 
-// Función para obtener libros relacionados
+// Libros relacionados
 async function fetchRelatedBooks(category) {
     const response = await fetch(`http://localhost:3000/books?category=${category}`);
     const relatedBooks = await response.json();
     const relatedBooksList = document.getElementById('relatedBooksList');
     relatedBooksList.innerHTML = ''; // Limpiar listado previo
+
     relatedBooks.forEach(book => {
-        const li = document.createElement('li');
-        li.textContent = `${book.title} - ${book.author}`;
-        relatedBooksList.appendChild(li);
+        if (book.id.toString() !== bookId.toString()) { // Excluir el libro actual (corrección)
+            const li = document.createElement('li');
+            li.className = 'related-cards-container';
+            li.innerHTML = `
+                <a href="libro.html?id=${book.id}">
+                    <img src="images/books/${book.id}.png" alt="${book.title} Cover" style="width: 200px; height: auto; border-radius: 5px;">
+                    <h4>${book.title}</h4>
+                    <p>${book.author}</p>
+                </a>
+            `;
+            relatedBooksList.appendChild(li);
+        }
     });
 }
+
 
 // Mostrar modal para añadir opinión
 document.getElementById('addReviewButton').addEventListener('click', () => {

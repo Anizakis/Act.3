@@ -15,6 +15,22 @@
       "author": "Author 2",
       "category": "non-fiction",
       "price": 14.5
+    },
+  {
+      "id": "3",
+      "isbn": "978-8445077917",
+      "title": "Book Title 3",
+      "author": "Author 3",
+      "category": "fiction",
+      "price": 8.54
+  },
+    {
+      "id": "4",
+      "isbn": "978-8413141220",
+      "title": "Book Title 4",
+      "author": "Author 4",
+      "category": "non-fiction",
+      "price": 11.35
     }
   ],
   "reviews": [
