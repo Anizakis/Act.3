@@ -15,6 +15,22 @@
       "author": "Author 2",
       "category": "non-fiction",
       "price": 14.5
+    },
+    {
+      "id": "3",
+      "isbn": "0-3174-5234-7",
+      "title": "Book Title 3",
+      "author": "Author 3",
+      "category": "education",
+      "price": 15.99
+    },
+    {
+      "id": "4",
+      "isbn": "0-2295-7200-6",
+      "title": "Book Title 4",
+      "author": "Author 4",
+      "category": "science",
+      "price": 16.5
     }
   ],
   "reviews": [
@@ -29,6 +45,18 @@
       "bookId": 2,
       "text": "Informative read.",
       "rating": 4
+    },
+    {
+      "id": "2375",
+      "bookId": "3",
+      "text": "Great Choice!",
+      "rating": "5"
+    },
+    {
+      "id": "6c6a",
+      "bookId": "4",
+      "text": "Indispensable",
+      "rating": "4"
     }
   ]
 }
