@@ -354,6 +354,37 @@ main p {
 .volver-btn:hover {
     background-color: #1f1f1f;
 }
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center; /* Centra el texto */
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    #filters select {
+        font-size: 0.9rem;
+    }
+
+    #books li h3 {
+        font-size: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #openCartBtn {
+        top: 15px;
+        right: 15px;
+        font-size: 1em;
+        padding: 0.6em;
+    }
+}
 
 /* Estilo para los cards de libros relacionados */
 .related-cards-container {
