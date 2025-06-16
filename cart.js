@@ -50,20 +50,30 @@ class Cart {
                     const subtotal = price * cantidad;
 
                     const li = document.createElement('li');
-                    const info = document.createElement('div');
-                    info.classList.add('cart-item-info');
-                    info.innerHTML = `
-                        <strong>${book.title}</strong><br>
-                        ${price.toFixed(2)} €/ud × ${cantidad} = <strong>${subtotal.toFixed(2)} €</strong>
+                    li.classList.add('cart-item');
+                    li.innerHTML = `
+                    <div class="cart-item-left">
+                        <img src="images/books/${book.id}.png" alt="${book.title}" class="cart-thumb">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4>${book.title}</h4>
+                        <div class="cart-controls">
+                        <button class="qty-btn" data-action="decrease">−</button>
+                        <span class="qty-value">${cantidad}</span>
+                        <button class="qty-btn" data-action="increase">+</button>
+                        </div>
+                        <p class="cart-item-pricing">${price.toFixed(2)} €/ud × ${cantidad} = <strong>${subtotal.toFixed(2)} €</strong></p>
+                    </div>
+                    <div class="cart-item-remove-container">
+                        <button class="cart-item-remove" title="Eliminar del carrito">
+                        <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
                     `;
 
-                    li.appendChild(info);
-
-                    const removeButton = document.createElement('button');
-                    removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-                    removeButton.title = 'Eliminar Producto';
-                    removeButton.onclick = () => this.eliminarProducto(isbn);
-                    li.appendChild(removeButton);
+                    li.querySelector('.cart-item-remove').onclick = () => this.eliminarProducto(isbn);
+                    li.querySelector('[data-action="increase"]').onclick = () => this.actualizarProducto(isbn, 1);
+                    li.querySelector('[data-action="decrease"]').onclick = () => this.actualizarProducto(isbn, -1);
 
                     cartItems.appendChild(li);
                     total += subtotal;

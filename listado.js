@@ -82,6 +82,7 @@ fetchBooks();
 const cartSidebar = document.getElementById('cartSidebar');
 const openCartBtn = document.getElementById('openCartBtn');
 const closeCartBtn = document.getElementById('closeCartBtn');
+const clearCartBtn = document.getElementById('clearCartBtn');
 
 openCartBtn.addEventListener('click', () => {
     cartSidebar.classList.add('open');
@@ -95,6 +96,9 @@ closeCartBtn.addEventListener('click', () => {
     }, 400); 
 });
 
+clearCartBtn.addEventListener('click', () => {
+    cart.vaciarCarrito();
+});
 
 function mostrarToast(mensaje = "Producto añadido al carrito") {
     const toast = document.getElementById('toast');
