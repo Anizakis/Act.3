@@ -16,7 +16,6 @@
       "category": "non-fiction",
       "price": 14.5
     },
-<<<<<<< HEAD
     {
       "id": "3",
       "isbn": "0-3174-5234-7",
@@ -32,23 +31,6 @@
       "author": "Author 4",
       "category": "science",
       "price": 16.5
-=======
-  {
-      "id": "3",
-      "isbn": "978-8445077917",
-      "title": "Book Title 3",
-      "author": "Author 3",
-      "category": "fiction",
-      "price": 8.54
-  },
-    {
-      "id": "4",
-      "isbn": "978-8413141220",
-      "title": "Book Title 4",
-      "author": "Author 4",
-      "category": "non-fiction",
-      "price": 11.35
->>>>>>> e769ac27f6cd57c8c42a3035e276dc0337758050
     }
   ],
   "reviews": [

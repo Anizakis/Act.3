@@ -354,7 +354,6 @@ main p {
 .volver-btn:hover {
     background-color: #1f1f1f;
 }
-<<<<<<< HEAD
 footer {
     background-color: #333;
     color: white;
@@ -384,7 +383,8 @@ footer {
         right: 15px;
         font-size: 1em;
         padding: 0.6em;
-=======
+    }
+}
 
 /* Estilo para los cards de libros relacionados */
 .related-cards-container {
@@ -443,6 +443,5 @@ footer {
 
     .related-cards-container .card p {
         font-size: 0.85rem;
->>>>>>> e769ac27f6cd57c8c42a3035e276dc0337758050
     }
 }
