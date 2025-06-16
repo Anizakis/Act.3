@@ -354,6 +354,7 @@ main p {
 .volver-btn:hover {
     background-color: #1f1f1f;
 }
+<<<<<<< HEAD
 footer {
     background-color: #333;
     color: white;
@@ -383,5 +384,65 @@ footer {
         right: 15px;
         font-size: 1em;
         padding: 0.6em;
+=======
+
+/* Estilo para los cards de libros relacionados */
+.related-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 10px 0;
+    margin: 0 auto;
+    list-style: none;
+    max-width: 800px;
+}
+
+.related-cards-container .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.related-cards-container .card img {
+    width: 200px;    /* Mismo tamaño que la imagen principal */
+    height: auto;    /* Mantener proporción */
+    border-bottom: 1px solid #eee;
+    border-radius: 5px; /* Mismo redondeo que la imagen principal */
+}
+
+.related-cards-container .card h4 {
+    font-size: 1rem;
+    margin: 10px 8px 6px;
+}
+
+.related-cards-container .card p {
+    font-size: 0.85rem;
+    margin: 0 8px 12px;
+    color: #555;
+}
+
+
+/* Para dispositivos pequeños (móviles) */
+@media (max-width: 480px) {
+    .related-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .related-cards-container .card h4 {
+        font-size: 1rem;
+    }
+
+    .related-cards-container .card p {
+        font-size: 0.85rem;
+>>>>>>> e769ac27f6cd57c8c42a3035e276dc0337758050
     }
 }
