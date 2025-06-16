@@ -150,6 +150,7 @@ main p {
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 #books li {
@@ -161,8 +162,8 @@ main p {
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.2s ease;
-    max-width: 280px;      
-    margin: 0 auto;        
+    max-width: 280px;
+    margin: 0 auto;
 }
 
 #books li:hover {
@@ -196,6 +197,217 @@ main p {
 #books li button:hover {
     background-color: #0056b3;
 }
+
+/* Estilo detalle de libro */
+.section-details, .section-reviews {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #0056b3;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.3rem;
+    font-weight: 700;
+}
+
+.details-content {
+    display: flex;
+    align-items: flex-start; /* Alinea la imagen y el contenido al borde superior */
+    gap: 2rem; /* Espacio entre la imagen y el contenido */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.details-content img {
+    max-width: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column; /* Apila el título y el autor uno debajo del otro */
+    justify-content: center;
+}
+
+.book-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.8rem;
+    color: #222;
+}
+
+.book-info p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.review-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.review-list li {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.review-list li:last-child {
+    border-bottom: none;
+}
+
+#addReviewButton.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+}
+
+#addReviewButton.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos base para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-form {
+    position: relative;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: #d00;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor del formulario */
+#reviewForm {
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 450px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Etiquetas */
+#reviewForm label {
+    font-weight: 600;
+    color: #0056b3;
+}
+
+/* Textarea y input */
+#reviewForm textarea,
+#reviewForm input[type="number"] {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    border: 1.8px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+#reviewForm textarea:focus,
+#reviewForm input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0,123,255,0.4);
+}
+
+/* Botón enviar */
+#reviewForm button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.7rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#reviewForm button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    #reviewForm {
+        padding: 1.5rem 1.5rem;
+    }
+}
+
+
 
 /* === CARRITO DE COMPRAS === */
 #openCartBtn {
@@ -444,48 +656,100 @@ footer {
     }
 }
 
-/* Estilo para los cards de libros relacionados */
+/* Contenedor general de los libros relacionados */
+.section-related-books {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 1.5rem 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        color: #0056b3;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 0.3rem;
+        font-weight: 700;
+    }
+
 .related-cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    padding: 10px 0;
+    gap: 20px;
+    padding: 1rem 0;
     margin: 0 auto;
     list-style: none;
-    max-width: 800px;
+    max-width: 900px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.related-cards-container .card {
+/* Cada card individual */
+.related-cards-container .related-card {
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     max-width: 200px;
     margin: 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.related-cards-container .card img {
-    width: 200px;    /* Mismo tamaño que la imagen principal */
-    height: auto;    /* Mantener proporción */
-    border-bottom: 1px solid #eee;
-    border-radius: 5px; /* Mismo redondeo que la imagen principal */
+/* Efecto hover para dar “zoom” y sombra más intensa */
+.related-cards-container .related-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-.related-cards-container .card h4 {
+/* Imagen con borde redondeado y sombra */
+.related-cards-container .related-card img {
+    width: 200px !important;
+    height: auto !important;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+/* Título del libro */
+.related-cards-container .related-card h4 {
+    font-size: 1.2rem;
+    margin: 10px 8px 4px;
+    color: #222;
+    font-weight: 700;
+}
+
+/* Autor */
+.related-cards-container .related-card p {
     font-size: 1rem;
-    margin: 10px 8px 6px;
+    margin: 0 8px 12px;
+    color: #666;
+    font-style: italic;
 }
 
-.related-cards-container .card p {
-    font-size: 0.85rem;
-    margin: 0 8px 12px;
-    color: #555;
+/* Animación inicial: cards aparecen con un fade-in y subida */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+.related-cards-container .related-card {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
 
 
 /* Para dispositivos pequeños (móviles) */

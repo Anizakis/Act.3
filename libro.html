@@ -16,19 +16,19 @@
 
 <main>
     <!-- Detalles del libro -->
-    <section id="bookDetails">
-        <h2>Detalles</h2>
-        <div id="details"></div>
+    <section id="bookDetails" class="section-details">
+        <h2 class="section-title">Detalles</h2>
+        <div id="details" class="details-content"></div>
     </section>
     <!-- Opiniones del libro -->
-    <section id="reviews">
-        <h2>Opiniones</h2>
-        <ul id="reviewList"></ul>
-        <button id="addReviewButton">Añadir Opinión</button>
+    <section id="reviews" class="section-reviews">
+        <h2 class="section-title">Opiniones</h2>
+        <ul id="reviewList" class="review-list"></ul>
+        <button id="addReviewButton" class="btn-primary">Añadir Opinión</button>
     </section>
     <!-- Libros relacionados -->
-    <section id="relatedBooks">
-        <h2>Libros Relacionados</h2>
+    <section id="relatedBooks" class="section-related-books">
+        <h2 class="section-title">Libros Relacionados</h2>
         <ul id="relatedBooksList" class="related-cards-container"></ul>
     </section>
 </main>
@@ -36,14 +36,19 @@
 
 <!-- Modal para añadir opinión -->
 <div id="reviewModal" class="modal">
-    <form id="reviewForm">
+    <form id="reviewForm" class="modal-form">
+        <button type="button" id="closeModalButton" class="close-button">&times;</button>
+        <h3>Añadir Opinión</h3>
         <label for="reviewText">Tu Opinión:</label>
         <textarea id="reviewText" required></textarea>
+
         <label for="reviewRating">Puntuación:</label>
         <input type="number" id="reviewRating" min="1" max="5" required>
-        <button type="submit">Enviar</button>
+
+        <button type="submit" class="btn-primary">Enviar</button>
     </form>
 </div>
+
 <script src="libro.js"></script>
 </body>
 </html>

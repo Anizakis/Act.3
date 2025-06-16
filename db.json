@@ -3,34 +3,82 @@
     {
       "id": "1",
       "isbn": "978-3-16-148410-0",
-      "title": "Book Title 1",
-      "author": "Author 1",
+      "title": "The Package design Book",
+      "author": "Taschen",
       "category": "fiction",
       "price": 12.99
     },
     {
       "id": "2",
       "isbn": "978-1-23-456789-7",
-      "title": "Book Title 2",
-      "author": "Author 2",
+      "title": "Nuevo diseño editorial",
+      "author": "Hoaki",
       "category": "non-fiction",
       "price": 14.5
     },
     {
       "id": "3",
       "isbn": "0-3174-5234-7",
-      "title": "Book Title 3",
-      "author": "Author 3",
+      "title": "Diseño Gráfico Digital",
+      "author": "Anna María López López",
       "category": "education",
       "price": 15.99
     },
     {
       "id": "4",
       "isbn": "0-2295-7200-6",
-      "title": "Book Title 4",
-      "author": "Author 4",
+      "title": "Diseño",
+      "author": "DK",
       "category": "science",
       "price": 16.5
+    },
+    {
+      "id": "5",
+      "isbn": "978-3-16-148410-0",
+      "title": "La comunidad del anillo",
+      "author": "J.R.R. Tolkien",
+      "category": "fiction",
+      "price": 12.99
+    },
+    {
+      "id": "6",
+      "isbn": "978-1-23-456789-7",
+      "title": "Hacia rutas salvajes",
+      "author": "Jon Krakauer",
+      "category": "non-fiction",
+      "price": 14.5
+    },
+    {
+      "id": "7",
+      "isbn": "978-3-16-148410-0",
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "category": "fiction",
+      "price": 12.99
+    },
+    {
+      "id": "8",
+      "isbn": "978-1-23-456789-7",
+      "title": "Mi historia",
+      "author": "Michele Obama",
+      "category": "non-fiction",
+      "price": 14.5
+    },
+    {
+      "id": "9",
+      "isbn": "0-2295-7200-6",
+      "title": "La teoría del todo",
+      "author": "Stephen W. Hawking",
+      "category": "science",
+      "price": 16.5
+    },
+    {
+      "id": "10",
+      "isbn": "978-3-16-148410-0",
+      "title": "Trilogía Fundación",
+      "author": "Isaac Asimov",
+      "category": "fiction",
+      "price": 12.99
     }
   ],
   "reviews": [
@@ -55,6 +103,18 @@
     {
       "id": "6c6a",
       "bookId": "4",
+      "text": "Indispensable",
+      "rating": "4"
+    },
+    {
+      "id": "6c6a",
+      "bookId": "5",
+      "text": "Indispensable",
+      "rating": "5"
+    },
+    {
+      "id": "6c6a",
+      "bookId": "6",
       "text": "Indispensable",
       "rating": "4"
     }

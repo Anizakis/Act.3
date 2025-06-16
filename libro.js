@@ -44,47 +44,72 @@ async function fetchReviews() {
 
 // Libros relacionados
 async function fetchRelatedBooks(category) {
-    const response = await fetch(`http://localhost:3000/books?category=${category}`);
-    const relatedBooks = await response.json();
-    const relatedBooksList = document.getElementById('relatedBooksList');
-    relatedBooksList.innerHTML = ''; // Limpiar listado previo
+    try {
+        const response = await fetch(`http://localhost:3000/books?category=${category}`);
+        const relatedBooks = await response.json();
+        const relatedBooksList = document.getElementById('relatedBooksList');
+        relatedBooksList.innerHTML = '';
 
-    relatedBooks.forEach(book => {
-        if (book.id.toString() !== bookId.toString()) { // Excluir el libro actual (corrección)
-            const li = document.createElement('li');
-            li.className = 'related-cards-container';
-            li.innerHTML = `
-                <a href="libro.html?id=${book.id}">
-                    <img src="images/books/${book.id}.png" alt="${book.title} Cover" style="width: 200px; height: auto; border-radius: 5px;">
-                    <h4>${book.title}</h4>
-                    <p>${book.author}</p>
-                </a>
-            `;
-            relatedBooksList.appendChild(li);
-        }
-    });
+        relatedBooks.forEach(book => {
+            if (book.id.toString() !== bookId.toString()) { // Excluir el libro actual (corrección)
+                const li = document.createElement('li');
+                li.className = 'related-card';
+                li.innerHTML = `
+          <a href="libro.html?id=${book.id}">
+            <img src="images/books/${book.id}.png" alt="${book.title} Cover" />
+            <h4>${book.title}</h4>
+            <p>${book.author}</p>
+          </a>
+        `;
+                relatedBooksList.appendChild(li);
+            } else {
+                console.log('Excluyendo libro actual:', book.id);
+            }
+        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
+
 
 
 // Mostrar modal para añadir opinión
 document.getElementById('addReviewButton').addEventListener('click', () => {
-    document.getElementById('reviewModal').style.display = 'block';
+    document.getElementById('reviewModal').style.display = 'flex';
 });
 
-// Enviar opinión al servidor
-document.getElementById('reviewForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const reviewText = document.getElementById('reviewText').value;
-    const reviewRating = document.getElementById('reviewRating').value;
-    const bookId = urlParams.get('id');
-    await fetch(`http://localhost:3000/reviews`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({bookId: bookId,  text: reviewText, rating: reviewRating }),
-    });
-    fetchReviews(); // Actualizar opiniones
+// Cerrar el modal al hacer clic fuera del formulario
+document.getElementById('reviewModal').addEventListener('click', (event) => {
+    if (event.target === document.getElementById('reviewModal')) {
+        document.getElementById('reviewModal').style.display = 'none';
+    }
+});
+
+// Cerrar el modal al hacer clic en el botón de cerrar
+document.getElementById('closeModalButton').addEventListener('click', () => {
     document.getElementById('reviewModal').style.display = 'none';
 });
+
+// Enviar el formulario
+document.getElementById('reviewForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const reviewText = document.getElementById('reviewText').value.trim();
+    const reviewRating = document.getElementById('reviewRating').value;
+
+    if (reviewText && reviewRating) {
+        // Aquí iría la petición al servidor
+        console.log('Opinión enviada:', reviewText, 'Puntuación:', reviewRating);
+
+        // Cerrar y limpiar el modal
+        document.getElementById('reviewModal').style.display = 'none';
+        document.getElementById('reviewForm').reset();
+    }
+});
+
+
+
+
 
 // Cargar datos al inicio
 fetchBookDetails();
