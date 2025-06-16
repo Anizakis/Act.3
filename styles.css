@@ -161,6 +161,8 @@ main p {
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.2s ease;
+    max-width: 280px;      
+    margin: 0 auto;        
 }
 
 #books li:hover {
@@ -443,5 +445,9 @@ footer {
 
     .related-cards-container .card p {
         font-size: 0.85rem;
+    }
+
+    #books li {
+        max-width: 100%;
     }
 }
