@@ -611,10 +611,19 @@ main p {
     pointer-events: none;
     transition: opacity 0.4s ease;
     z-index: 9999;
+
+    transition: opacity 0.4s ease, transform 0.3s ease;
 }
 
 .toast.show {
     opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+#opinionToast {
+    background-color: #28a745; 
+    color: white;
+    z-index: 99999; 
 }
 
 /* === BOTÓN VOLVER === */

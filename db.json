@@ -117,6 +117,72 @@
       "bookId": "6",
       "text": "Indispensable",
       "rating": "4"
+    },
+    {
+      "id": "54e1",
+      "bookId": "3",
+      "text": "Opinión",
+      "rating": 4
+    },
+    {
+      "id": "3377",
+      "bookId": "3",
+      "text": "Dejo por aquí otra opinión (no me he leído el libro)",
+      "rating": 1
+    },
+    {
+      "id": "db2a",
+      "bookId": "3",
+      "text": "otra más",
+      "rating": 4
+    },
+    {
+      "id": "1100",
+      "bookId": "3",
+      "text": "Me ha encantado!",
+      "rating": 5
+    },
+    {
+      "id": "42bb",
+      "bookId": "3",
+      "text": "A mi no",
+      "rating": 2
+    },
+    {
+      "id": "145c",
+      "bookId": "8",
+      "text": "2+3",
+      "rating": 5
+    },
+    {
+      "id": "9f0d",
+      "bookId": "8",
+      "text": "Me ha gustado mucho",
+      "rating": 5
+    },
+    {
+      "id": "5cd1",
+      "bookId": "8",
+      "text": "Me ha gustado",
+      "rating": 5
+    },
+    {
+      "id": "a4b8",
+      "bookId": "8",
+      "text": "No me ha gustado nada de nada",
+      "rating": 1
+    },
+    {
+      "id": "a9ce",
+      "bookId": "8",
+      "text": "A mi si que me ha gustado, que dices?",
+      "rating": 5
+    },
+    {
+      "id": "9730",
+      "bookId": "8",
+      "text": "Callate que no tienes ni idea",
+      "rating": 1
     }
   ]
 }

@@ -98,15 +98,43 @@ document.getElementById('reviewForm').addEventListener('submit', async (event) =
     const reviewRating = document.getElementById('reviewRating').value;
 
     if (reviewText && reviewRating) {
-        // Aquí iría la petición al servidor
-        console.log('Opinión enviada:', reviewText, 'Puntuación:', reviewRating);
+        try {
+            const response = await fetch('http://localhost:3000/reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    bookId: bookId,
+                    text: reviewText,
+                    rating: parseInt(reviewRating)
+                })
+            });
 
-        // Cerrar y limpiar el modal
-        document.getElementById('reviewModal').style.display = 'none';
-        document.getElementById('reviewForm').reset();
+            if (!response.ok) {
+                throw new Error('Error al guardar la opinión');
+            }
+
+            document.getElementById('reviewModal').style.display = 'none';
+            document.getElementById('reviewForm').reset();
+
+            await fetchReviews();
+            mostrarOpinionToast(); 
+
+        } catch (error) {
+            console.error('Error al enviar la opinión:', error);
+        }
     }
 });
 
+function mostrarOpinionToast(mensaje = "Opinión enviada correctamente") {
+    const toast = document.getElementById('opinionToast');
+    toast.textContent = mensaje;
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2500);
+}
 
 
 
