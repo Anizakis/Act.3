@@ -15,10 +15,18 @@ async function fetchBooks(category = '') {
     books.forEach(book => {
         const li = document.createElement('li');
 
+        const imgLink = document.createElement('a');
+        imgLink.href = `libro.html?id=${book.id}`;
+        imgLink.title = `Ver detalles de ${book.title}`;
+
         const img = document.createElement('img');
         img.src = `images/books/${book.id}.png`;
         img.alt = `${book.title} Cover`;
         img.style.borderRadius = '5px';
+        
+        imgLink.appendChild(img);
+        li.appendChild(imgLink);
+
 
         const title = document.createElement('h3');
         title.textContent = book.title;
@@ -47,7 +55,6 @@ async function fetchBooks(category = '') {
         actions.appendChild(cartBtn);
         actions.appendChild(detailsLink);
 
-        li.appendChild(img);
         li.appendChild(title);
         li.appendChild(author);
         li.appendChild(actions);
